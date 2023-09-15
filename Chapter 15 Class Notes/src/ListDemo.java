@@ -64,6 +64,13 @@ public class ListDemo
             System.out.print(n + " ")
         }
 
+        iterator = staff.listIterator();
+        while(iterator.hasNext()){
+            String n = iterator.next();
+            if(n.equals("Harry"))
+                staff.remove("Diana");
+        } // Can't Modify a list while iterating through it.
+
 
 
     }
