@@ -68,10 +68,15 @@ public class ListDemo
         while(iterator.hasNext()){
             String n = iterator.next();
             if(n.equals("Harry"))
-                staff.remove("Diana");
+                //staff.remove("Diana");
         } // Can't Modify a list while iterating through it.
 
-
+        // Enhanced for loop automatically uses an iterator
+        for(String n: staff){
+            if(n.equals("Harry"))
+                staff.add("Charlie");
+                
+        }
 
     }
 }
