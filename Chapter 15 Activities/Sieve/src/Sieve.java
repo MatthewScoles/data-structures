@@ -26,18 +26,21 @@ public class Sieve
         i = 2;
         
             Iterator iterator = nums.iterator();
+
+        while(i<=n){
             while(iterator.hasNext()){
                 int x = (int) iterator.next();
-                if (x % 2 == 0 || x % 3 == 0 ) {
+                if (x % i == 0 && x != i) {
                     iterator.remove();
                 }
             }
+                i++;
+                iterator = nums.iterator();            
 
-            i++;
+            }
 
         System.out.println(nums);
-
-
+            System.out.println("k");
 
 
 
