@@ -25,7 +25,7 @@ public class Sieve
         }
         i = 2;
         
-            Iterator iterator = nums.iterator();
+        Iterator iterator = nums.iterator();
 
         while(i<=n){
             while(iterator.hasNext()){
@@ -34,13 +34,11 @@ public class Sieve
                     iterator.remove();
                 }
             }
-                i++;
-                iterator = nums.iterator();            
-
-            }
+            i++;
+            iterator = nums.iterator(); 
+        }
 
         System.out.println(nums);
-            System.out.println("k");
 
 
 

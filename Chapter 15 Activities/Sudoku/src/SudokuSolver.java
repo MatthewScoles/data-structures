@@ -6,7 +6,7 @@ public class SudokuSolver {
     private final int M = 3;
     private final int N = M * M;
     private int[][] grid;
-    private ArrayList<Set<Integer>> rows;
+    private ArrayList<Set<Integer>> rows = new ArrayList<>();
     private ArrayList<Set<Integer>> cols;
     private ArrayList<Set<Integer>> squares;
     private Set<Integer> nums;
@@ -37,9 +37,48 @@ public class SudokuSolver {
 
         // create the list of sets for each row (this.rows)
         // ...
+        Set<Integer> ROW = new HashSet<>();
+        int i = 0;
+        int row = 0;
+        while(i < N){
+             for (; row < row+1 && row < 9; row++) {
+
+                for (int col = 0; col < N; col++) {
+                   
+                    int number = this.grid[row][col];
+                    ROW.add(number);
+                }
+                this.rows.add(ROW);
+                ROW = new HashSet<>();
+                i++;
+                row++;
+            }}
+
+
+
+
+        
+
 
         // create the list of sets for each col (this.cols)
         // ...
+
+        Set<Integer> COL = new HashSet<>();
+        i = 0;
+        int col = 0;
+        while(i < N){
+            for (;col < N && row < 9; col++) {
+                
+                for (row = 0; row < N; row++) {
+                   
+                    int number = this.grid[row][col];
+                    COL.add(number);
+                }
+                this.cols.add(COL);
+                COL = new HashSet<>();
+                i++;
+                col++;
+            }}
 
         // create the list of sets for each square (this.squares)
         /* the squares are added to the list row-by-row:
@@ -48,15 +87,50 @@ public class SudokuSolver {
             6 7 8
          */
         // ...
+        Set<Integer> SQR = new HashSet<>();
+        int j = 1;
+        row = 0;
+        while(j <= 9){
+             for (row = 0; row < row+3; row++) {
+                
+                for (col = 0; col < col+3; col++) {
+                   
+                    int number = this.grid[row][col];
+                    COL.add(number);
+                }
+               row+=3;
+               col+=3;
+            if(j == 3 )
+            {
+                row = 0;
+                col = 3;
+            }
+            if(j == 6 )
+            {
+                row = 0;
+                col = 6;
+            }
+               j++;
+            this.squares.add(SQR);
+        }
+    }
+            
 
         // create a hash set for [1..9] (this.nums)
         // ...
+        Set<Integer> nums = new HashSet<>();
+        int n = 1;
+        while (n <= 9){
+            this.nums.add(n);
+            n++;
+        }
+
 
         // visually inspect that all the sets are correct
-        for (int row = 0; row < N; row++) {
+        for (row = 0; row < N; row++) {
             System.out.println("row " + row + ": " + this.rows.get(row));
         }
-        for (int col = 0; col < N; col++) {
+        for (col = 0; col < N; col++) {
             System.out.println("col " + col + ": " + this.cols.get(col));
         }
         for (int square = 0; square < N; square++) {
