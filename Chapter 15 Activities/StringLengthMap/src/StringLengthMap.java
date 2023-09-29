@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+
 /**
  * Read all words from a file and add them to a
  * map whose keys are word lengths and whose values
@@ -12,13 +13,13 @@ public class StringLengthMap
 {
     public static void main(String[] args) throws FileNotFoundException
     {
-        String filename = "src/test1.txt";
-
+        String filename = "C:\\Users\\Msscoles\\Desktop\\data-structures\\Chapter 15 Activities\\StringLengthMap\\src\\test1.txt";;
+        
         try (Scanner in = new Scanner(new File(filename)))
         {
 
             // Create your map here
-            
+             Map<Integer, String> words = new HashMap<>();
 
             while (in.hasNext())
             {
@@ -28,12 +29,25 @@ public class StringLengthMap
                 // Update the map here
                 // Modify Worked Example 15.1
                 
-
-
+                words.put(len, word);
             }
-
+            System.out.println("hi");
             // Print the strings, in increasing order of their length
             // Use this format: 1: i, a, i
+            int i = 0;
+            int count = 0;
+            while(count <= words.size()){
+                Set<Integer> keys = words.keySet();
+                for (Integer key: keys){
+                    if(i == key){
+                    System.out.println(words.get(key) + " " + key);
+                    count++;    
+                    }
+            }   i += 1;
+        }
+         System.out.println("Hi");
+            
+
         } catch (FileNotFoundException e)
         {
             System.out.println("Cannot open: " + filename);
