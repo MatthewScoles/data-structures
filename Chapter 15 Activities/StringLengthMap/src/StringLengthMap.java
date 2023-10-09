@@ -43,10 +43,9 @@ public class StringLengthMap
                     System.out.println(words.get(key) + " " + key);
                     count++;    
                     }
-            }   i += 1;
+            }  
+             i += 1;
         }
-         System.out.println("Hi");
-            
 
         } catch (FileNotFoundException e)
         {
