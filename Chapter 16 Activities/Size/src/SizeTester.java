@@ -21,7 +21,6 @@ public class SizeTester
         iterator.next();
         iterator.set("Emily");
 
-        names.removeFirst();
         
         iterator = names.listIterator();
         while (iterator.hasNext()) 

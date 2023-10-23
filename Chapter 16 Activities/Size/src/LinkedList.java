@@ -8,6 +8,7 @@ import java.util.NoSuchElementException;
 */
 public class LinkedList
 {
+    private int size = 0;
     private Node first;
 
     /**
@@ -22,10 +23,19 @@ public class LinkedList
         Computes the size of the linked list.
         @return the number of elements in the list
     */
-    public int size()
-    {
-        . . .
-    }
+    public int size(){
+        Node current = first;
+        if(current!= null){
+             size++;
+               
+            
+            current = current.next;
+        }
+        
+        return size;
+        
+        
+     }
 
     /**
         Returns the first element in the linked list.

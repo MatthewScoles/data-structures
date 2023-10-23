@@ -2,7 +2,7 @@ public class QueueDemo
 {
     public static void main(String[] args)
     {
-        /*
+        
         CircularArrayQueue queue = new CircularArrayQueue();
 
         queue.add("Tom");
@@ -13,13 +13,17 @@ public class QueueDemo
         System.out.println(queue.remove()); // remove Diana
         queue.add("Juliet");
         queue.add("Maria");
-
+        queue.add("JEFF");
+        queue.add("Joe Biden");
+        queue.add("Donald Trump");
         while(!queue.empty())
         {
             System.out.println(queue.remove());
         }
         
         System.out.println("Expected output: Tom, Diana, Harry, Romeo, Juliet, Maria");
-        */
+        
+
+
     }
 }
