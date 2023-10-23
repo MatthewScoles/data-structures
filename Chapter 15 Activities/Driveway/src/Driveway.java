@@ -46,18 +46,16 @@ public class Driveway
     public void remove(int licensePlate)
     {
         // Complete this method
-        int i = 0;
-        while(i == 0){
-          if(driveway.pop().equals(licensePlate)){
-            i = 1;
-            driveway.pop();
-            }
-          else
+          while(driveway.peek() != licensePlate){
             street.push(driveway.pop());
+            }
+            driveway.pop();
+          while (street.isEmpty() != true)
+            driveway.push(street.pop());
         }
 
 
-    }
+    
 
     /**
       * Prints the driveway and street details to the screen.
@@ -66,15 +64,15 @@ public class Driveway
     {
         System.out.println("In Driveway, starting at first in (one license plate per line):");
         // Print the cars in the driveway here
-         for(int inte: driveway){
-          System.out.println(driveway.pop());
+         for(int i = driveway.size()-1; i >=0; i--){
+          System.out.println(driveway.get(i));
           
         }
 
         System.out.println("In Street, starting at first in (one license plate per line):");
         // Print the cars in the street here
-        for(int inte: street){
-          System.out.println(street.pop());
+        for(int i = 0; i < street.size(); i++){
+          System.out.println(street.get(i));
           
         }
 
