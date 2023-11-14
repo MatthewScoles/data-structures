@@ -13,7 +13,7 @@ public class Tree
     {
         public Object data;
         public List<Node> children;
-
+        public Node root;
         /**
             Computes the size of the subtree whose root is this node.
             @return the number of nodes in the subtree
@@ -64,4 +64,32 @@ public class Tree
     }
 
     // Additional methods will be added in later sections.
-}
+
+    public int leafCount(){
+        int leaves = 0;
+        for(Node child: root.children){
+            leaves += leafCount(child);
+        }
+        return leaves;
+    }
+
+    public int leafCount(Node C){
+        int leaves = 0;
+
+        if(C.data == null)
+            return leaves++;
+        else{
+            Node child = C.root;
+            if(child != null){
+                C.children = new ArrayList<>();
+                for (Node child1: C.children){
+                    return leafCount(child1);
+                }
+            }
+        
+            
+        }
+        return leaves;
+        
+    }
+}   
