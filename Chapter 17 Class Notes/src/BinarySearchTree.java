@@ -12,7 +12,9 @@ public class BinarySearchTree
     */
     public BinarySearchTree()
     {   
-        
+        this.root = null;
+
+
     }
     
     /**
@@ -21,8 +23,16 @@ public class BinarySearchTree
     */
     public void add(Comparable obj) 
     {   
-        
-    }
+        Node newNode = new Node();
+        newNode.data = obj;
+        newNode.left = null;
+        newNode.right = null;
+
+        if(this.root == null)
+            this.root = newNode;
+        else
+            this.root.addNode(newNode);
+        }
 
     /**
         Tries to find an object in the tree.
@@ -31,6 +41,18 @@ public class BinarySearchTree
     */
     public boolean find(Comparable obj)
     {
+        Node current = this.root;
+        
+        while(current != null){
+            int diff = obj.compareTo(current.data);
+            if(diff== 0)
+                return true;
+            else if(diff < 0)
+                current = current.left;
+            else if (diff > 0)
+                current = current.right;
+        }
+
         return false;
     }
     
@@ -41,7 +63,62 @@ public class BinarySearchTree
     */
     public void remove(Comparable obj)
     {
+        Node toBeRemoved = this.root;
+        Node parent = null;
+        boolean found = false;
+
+        while(toBeRemoved != null && !found){
+            int diff = obj.compareTo(toBeRemoved.data)
+            if(diff== 0)
+                found = true;
+            else{
+                parent = toBeRemoved;
+                if(diff < 0)
+                toBeRemoved = toBeRemoved.left;
+            else if (diff > 0)
+                toBeRemoved = toBeRemoved.right;
+            }
+        }
+
+        if(!found)
+            return;
         
+
+        if(toBeRemoved.left == null || toBeRemoved.right == null){
+            Node newchild;
+            
+            if(toBeRemoved.left == null){
+                newchild = toBeRemoved.right;
+            }
+            else if(toBeRemoved.right == null){
+                newchild = toBeRemoved.left;
+            }
+
+            if(parent == null)
+                this.root = newchild;
+            else if (parent.left == toBeRemoved)
+                parent.left = newchild;
+            else 
+                parent.right = newchild;    
+
+                return;
+        
+        }
+
+        Node leastParent = toBeRemoved;
+        Node least = toBeRemoved.right;
+        while(least.left == null){
+            leastParent = least;
+            least = least.left;
+        }
+
+        // Move the data
+        toBeRemoved.data = least.data;
+        //unlink the least child
+        if (leastParent == toBeRemoved)
+            leastParent.right = least.right;
+        else
+            leastParent.left = least.left;
     }
     
     /**
@@ -49,7 +126,8 @@ public class BinarySearchTree
     */
     public void print()
     {   
-        
+        print(this.root);
+        System.out.println();
     }   
 
     /**
@@ -58,7 +136,13 @@ public class BinarySearchTree
     */
     private static void print(Node parent)
     {   
-        
+        if(parent == null)
+            return;
+        else {
+            print(parent.left);
+            System.out.println(parent.data+ " ");
+            print(parent.right);
+            }
     }
 
     /**
@@ -67,7 +151,11 @@ public class BinarySearchTree
     */
     static class Node
     {   
-        
+        //Binary trees need comparable objects.
+        public Comparable data;
+        public Node left;
+        public Node right;
+
 
         /**
             Inserts a new node as a descendant of this node.
@@ -75,8 +163,59 @@ public class BinarySearchTree
         */
         public void addNode(Node newNode)
         {   
-            
+            // < 0 means that newNode is left and > 0 means that newNode is to the right
+            int diff = newNode.data.compareTo(data);
+            if(diff < 0){
+                if(left== null){
+                    left = newNode;
+                }
+                else{
+                    left.addNode(newNode);
+                }
+
+            }
+            else if(diff > 0){
+                if(right== null){
+                    right = newNode;
+                }
+                else{
+                    right.addNode(newNode);
+                }
+
+            }
         }
+
+        /*
+         * A vistor Whose visit method is called for each visited node during a tree traversal.
+         */
+
+        public interface Visitor{
+            //The visit method is called for each visited node
+            void visit(Object data);
+            
+         }
+
+         public void preorder(Visitor V){
+            Tree.preorder(this.root, v);
+        }
+
+        private static void preorder(Node h, Visitor v){
+            if(h == null)
+            return;
+
+            v.visit(h.data);
+
+            for(Node child: h.children){
+                Tree.preorder(child, v);
+            }
+        }
+
+        /*
+         * Traverse thi tree in preorder. 
+         * param v: is the visitor to be invoked at each node.
+         */
+
+
     }
 }
 

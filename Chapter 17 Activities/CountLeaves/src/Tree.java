@@ -65,6 +65,19 @@ public class Tree
 
     // Additional methods will be added in later sections.
 
+    /*public int leafCount(){
+        int leaves = 0;
+        if (root.size() == 0){
+            leaves++;
+        }
+        else
+            for(Node child: root.children){
+            leaves += child.leafCount();
+            }
+        return leaves;
+    }*/
+
+
     public int leafCount(){
         int leaves = 0;
         for(Node child: root.children){
