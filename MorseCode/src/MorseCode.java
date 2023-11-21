@@ -84,14 +84,16 @@ public class MorseCode
      */
     private static void treeInsert(char letter, String code)
     {
-        
-        for(int i = 0; i< code.length();i++){
+
+        for(int i = 0; i< code.length();){
             if(code.substring(i, i+1).equals("-")){
-            if( == null){
-                
+                if(decodeTree.getLeft() == null){
+            
+                }}
+            if(code.substring(i, i+1).equals(".")){
+                if(decodeTree.getRight()== null)
             }
-         }
-      }
+      } 
     }
 
     /**
