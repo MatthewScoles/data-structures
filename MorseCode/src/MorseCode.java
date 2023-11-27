@@ -142,6 +142,35 @@ public class MorseCode
             !!! INSERT CODE HERE
         */
 
+        String current = "";
+
+        while(morse.length()> 0){
+            if(morse.charAt(0)== ' '){
+                current = " ";
+                morse = morse.substring(1);
+            }
+            else{
+                if(!morse.contains(" ")){
+                    current = morse;
+                }
+                else{
+                    current = morse.substring(0, morse.indexOf(" "));
+                    morse = morse.substring(1 + morse.indexOf(" "));
+                }
+            }
+
+                TreeNode now = decodeTree;
+
+            for(int i = 0; i < current.length(); i++){
+                if(current.charAt(i)== '.')
+                    now = now.getLeft();
+                else    
+                    now = now.getRight();
+            }
+            current = (now.getValue()).toString();
+        }
+        text.append(current);
+
         return text.toString();
     }
 }
